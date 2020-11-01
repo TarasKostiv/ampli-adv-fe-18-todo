@@ -1,40 +1,51 @@
-const addInput = document.querySelector('#add-input');
-const addBtn = document.querySelector('#add-btn');
+const addInput = document.getElementById('add-input');
+const addBtn = document.getElementById('add-btn');
 const list = document.querySelector('.list');
+const items = list.children;
+const countNum = document.querySelector('.task-counter_num');
+
+// Визначення завдань на початку роботи сторінки
+countNum.innerText = items.length;
 
 function addTask() {
-  const li = document.createElement('li');
-  li.classList.add('list-elem');
+  // Ініціалізація елементів
+  const newTask = document.createElement('li');
+  newTask.classList.add('list_item');
 
-  // const inputCheckbox = document.createElement('input');
-  // inputCheckbox.classList.add('list_elem_ckeckbox');
-  // inputCheckbox.type = 'checkbox';
+  const taskCheckbox = document.createElement('input');
+  taskCheckbox.classList.add('list_elem_txt');
+  taskCheckbox.type = 'checkbox';
 
-  const spanTxt = document.createElement('span');
-  spanTxt.classList.add('list-elem-txt');
+  const taskText = document.createElement('span');
+  taskText.classList.add('list_elem_txt');
 
-  const buttonDelete = document.createElement('button');
-  buttonDelete.classList.add('list_elem_btn-delete');
-  buttonDelete.append('Delete');
+  const taskDeleteBtn = document.createElement('button');
+  taskDeleteBtn.classList.add('list_elem_btn-delete');
 
-  if (addInput.value === '') {
-    alert('Write your task');
-  } else {
-    const newTask = addInput.value;
-    spanTxt.append(newTask);
-    list.appendChild(li).append(spanTxt, buttonDelete);
+  const trashIcon = document.createElement('img');
+  trashIcon.classList.add('list_elem_img-trash');
+  trashIcon.src = "./trash-icon.png";
+  taskDeleteBtn.appendChild(trashIcon);
+  // Добавляння елементів в HTML
+  if (addInput.value) {
+    taskText.innerText = addInput.value;
+    newTask.append(taskCheckbox, taskText, taskDeleteBtn);
+    list.appendChild(newTask);
     addInput.value = '';
-    elemDelete(buttonDelete);
+  } else {
+    alert('Write your task, please!');
   }
-}
 
-function elemDelete(element) {
-  element.addEventListener('click', (event) => {
-    element.parentElement.remove();
-    event.stopPropagation();
+  // Функціонал завдань: видалення і заштриховування
+  taskDeleteBtn.addEventListener('click', () => {
+    newTask.remove();
+    countNum.innerText = items.length;
   });
+  taskCheckbox.addEventListener('click', () => { taskText.classList.toggle('list_elem_txt__checked'); });
+
+  // Лічильник завданнь
+  countNum.innerText = items.length;
 }
 
-addBtn.onclick = function () {
-  addTask();
-}
+// Виконання фунції при натисканні кнопки
+addBtn.addEventListener('click', () => { addTask() });

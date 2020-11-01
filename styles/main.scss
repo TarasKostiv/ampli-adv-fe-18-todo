@@ -48,12 +48,35 @@ input,button{
   overflow-y: auto;
 
   .list{
+    margin-top: 0;
     &_elem{
       &_txt{
         display: inline-block;
         margin-right: 5px;
-        margin-left: 5px;
+
+        &__checked{
+          text-decoration: line-through;
+          opacity: 0.5;
+        }
       }
+
+      &_btn-delete{
+        padding: 0;
+        margin: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        height: 20px;
+        width: 20px;  
+      }
+
+      &_img-trash{
+        height: 17px;
+        width: 17px;
+      }
+
+      
     }
   }
 }
+
