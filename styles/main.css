@@ -62,16 +62,17 @@ input, button, select {
 
 .list-wrap .list {
   margin-top: 0;
+  list-style-type: none;
+  padding-right: 7px;
+}
+
+.list-wrap .list_elem {
+  margin: 5px;
 }
 
 .list-wrap .list_elem_txt {
   display: inline-block;
   margin-right: 5px;
-}
-
-.list-wrap .list_elem_txt__checked {
-  text-decoration: line-through;
-  opacity: 0.5;
 }
 
 .list-wrap .list_elem_btn-delete {

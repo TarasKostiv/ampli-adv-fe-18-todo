@@ -49,15 +49,14 @@ input,button,select{
 
   .list{
     margin-top: 0;
+    list-style-type: none;
+    padding-right: 7px;
+
     &_elem{
+      margin: 5px;
       &_txt{
         display: inline-block;
         margin-right: 5px;
-
-        &__checked{
-          text-decoration: line-through;
-          opacity: 0.5;
-        }
       }
 
       &_btn-delete{

@@ -7,7 +7,6 @@ const filterSelector = document.querySelector('.filter-selection');
 
 // Визначення завдань на початку роботи сторінки
 countNum.innerText = items.length;
-console.log(document.cookie);
 
 function addTask() {
   // Ініціалізація елементів
@@ -43,7 +42,7 @@ function addTask() {
     newTask.remove();
     countNum.innerText = items.length;
   });
-  taskCheckbox.addEventListener('click', () => { taskText.classList.toggle('list_elem_txt__checked'); });
+  taskCheckbox.addEventListener('click', () => { newTask.classList.toggle('list_elem_txt__checked'); });
 
   // Лічильник завданнь
   countNum.innerText = items.length;
@@ -51,26 +50,24 @@ function addTask() {
 
 function filterTodo(e) {
   const todos = list.childNodes;
-  const taskTxt = document.querySelector('.list_elem_txt');
-  const tasks = document.getElementsByClassName('.list_elem');
 
-  todos.forEach(() => {
+  todos.forEach((todo) => {
     switch (e.target.value) {
       case "all":
-        tasks.style.display = 'block';
+        todo.style.display = 'block';
         break;
       case 'completed':
-        if (taskTxt.classList.contains('list_elem_txt__checked')) {
-          tasks.style.display = 'block';
+        if (todo.classList.contains('list_elem_txt__checked')) {
+          todo.style.display = 'block';
         } else {
-          tasks.style.display = 'none';
+          todo.style.display = 'none';
         }
         break;
       case 'uncompleted':
-        if (!taskTxt.classList.contains('list_elem_txt__checked')) {
-          tasks.style.display = 'block';
+        if (!todo.classList.contains('list_elem_txt__checked')) {
+          todo.style.display = 'block';
         } else {
-          tasks.style.display = 'none';
+          todo.style.display = 'none';
         }
     }
   })
