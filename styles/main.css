@@ -34,7 +34,7 @@ body {
           align-items: center;
 }
 
-input, button {
+input, button, select {
   font-family: 'Montserrat', sans-serif;
 }
 
